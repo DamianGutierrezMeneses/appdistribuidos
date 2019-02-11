@@ -1,1 +1,1 @@
-# prueba3
+# Contiene el proyecto de Aplicaciones distribuidas
