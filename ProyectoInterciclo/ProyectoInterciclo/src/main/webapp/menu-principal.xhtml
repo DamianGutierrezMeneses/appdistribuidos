@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<ui:composition template="/tmpl.xhtml">
+
+	<ui:define name="titulo">SELECCIONE UNA OPCIÓN</ui:define>
+
+	<ui:define name="contenido">
+
+	<f:metadata>
+        <f:viewParam id="cedula" name="cedula" value="#{controladorVista.cedula}"/>
+        <f:viewAction action="#{controladorVista.loadDataUsuario()}" />
+ 	</f:metadata>
+   
+    
+<h:form>
+	<h:panelGrid columns="2">
+	 <h:outputLabel value="Bienvenido:" />
+	 <h:outputLabel value="#{controladorVista.usu.nombres}" />
+		<br />
+		<h:commandButton action="#{controladorVista.regresarCU()}" value="Administrar Usuarios" />
+		<br />
+		<h:commandButton action="#{grabadorBean.irGrabador()}" value="Administrar Grabadores" />
+		<br />
+		<h:commandButton action="#{controladorVista.regresar()}" value="Administrar Rostros" />
+		<br />
+		<h:commandButton action="#{controladorVista.irListarLog()}" value="Generar reportes de Usuarios" />
+		<br />
+		
+		<h:commandButton action="#{controladorVista.logout1()}" value="Salir de la Sesión" />
+
+	</h:panelGrid>
+	<h:messages globalOnly="true" />
+</h:form>
+
+	</ui:define>
+</ui:composition> 
+</html>

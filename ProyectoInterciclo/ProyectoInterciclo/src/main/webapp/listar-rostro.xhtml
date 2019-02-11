@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="/tmpl.xhtml">
+
+	<ui:define name="titulo">Menu Rostros</ui:define>
+
+	<ui:define name="contenido">
+
+		<h:form>
+
+<h:dataTable var="_AreaEvento" value="#{rostroBean.rostros}"
+
+            styleClass="simpletablestyle">
+            <h:column>
+                <f:facet name="header">Codigo</f:facet>
+                #{_AreaEvento.id}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Nombre</f:facet>
+                #{_AreaEvento.ruta}
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header">Acciones</f:facet>
+                <h:commandButton action="#{rostroBean.eliminar(_AreaEvento.id)}" value="Eliminar" />
+                <h:commandButton action="#{rostroBean.editar(_AreaEvento)}" value="Editar" />
+            </h:column>
+
+
+            <f:facet name="footer">
+            
+            <h:commandButton action="#{controladorVista.regresar()}" value="Regresar" />
+
+            </f:facet>
+        </h:dataTable>
+
+</h:form>
+		
+
+	</ui:define>
+</ui:composition>
+</html>

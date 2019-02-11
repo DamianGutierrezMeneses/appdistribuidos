@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="/tmpl.xhtml">
+
+	<ui:define name="titulo">Menu Usuario</ui:define>
+
+	<ui:define name="contenido">
+
+	<h:form>
+
+<h:dataTable var="_usuario" value="#{usuarioBean.usuariosRol}"
+
+            styleClass="simpletablestyle">
+            <h:column>
+                <f:facet name="header">Cedula</f:facet>
+                #{_usuario.cedula}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Nombres</f:facet>
+                #{_usuario.nombres}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Apellidos</f:facet>
+                #{_usuario.apellidos}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Email</f:facet>
+                #{_usuario.email}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Celular</f:facet>
+                #{_usuario.celular}
+            </h:column>
+             <h:column>
+                <f:facet name="header">Rol</f:facet>
+                #{_usuario.rol.nombreRol}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Acciones</f:facet>
+                <h:commandButton action="#{usuarioBean.eliminar(_usuario.cedula)}" value="Eliminar" />
+                <h:commandButton action="#{usuarioBean.CastigUsuario(_usuario)}" value="Editar" />
+            </h:column>
+
+
+            <f:facet name="footer">
+            
+            <h:commandButton action="#{controladorVista.regresarCU()}" value="Regresar" />
+
+            </f:facet>
+        </h:dataTable>
+
+</h:form>
+		
+
+	</ui:define>
+</ui:composition>
+</html>

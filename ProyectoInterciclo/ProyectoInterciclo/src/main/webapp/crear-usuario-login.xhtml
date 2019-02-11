@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<ui:composition template="/tmpl.xhtml">
+
+	<ui:define name="titulo">Ingresa tus Datos</ui:define>
+
+	<ui:define name="contenido">
+
+		
+<h:form>
+	<h:panelGrid columns="3">
+	
+		<h:outputLabel value="Cedula" />
+		<h:inputText value="#{usuarioBean.newUsuario.cedula}" id="txtcedula" />
+		<h:message for="txtcedula"/>
+		
+		<h:outputLabel value="Nombres" />
+		<h:inputText value="#{usuarioBean.newUsuario.nombres}" id="txtnombres" />
+		<h:message for="txtnombres"/>
+		
+		<h:outputLabel value="Apellidos" />
+		<h:inputText value="#{usuarioBean.newUsuario.apellidos}" id="txtapellidos" />
+		<h:message for="txtapellidos"/>
+		
+		<h:outputLabel value="Mail" />
+		<h:inputText value="#{usuarioBean.newUsuario.email}" id="txtfecha" />
+		<h:message for="txtmail"/>
+	
+		<h:outputLabel value="Telefono" />
+		<h:inputText value="#{usuarioBean.newUsuario.celular}" id="txtcelular" />
+		<h:message for="txtcelular"/>
+		
+		<h:outputLabel value="Contrasenia" />
+		<h:inputText value="#{usuarioBean.newUsuario.contrasenia}" id="txtcontrasenia" />
+		<h:message for="txtcontrasenia"/>
+		
+		<h:commandButton action="#{usuarioBean.guardarLogin()}" value="Guardar Usuario" />
+		<br />
+		
+
+	</h:panelGrid>
+	
+	<h:messages globalOnly="true" />
+</h:form>
+		<h:commandButton onclick="location.href='http://localhost:8080/ProyectoInterciclo2019/faces/login.xhtml'" value="Salir" />
+	</ui:define>
+</ui:composition>
+</html>

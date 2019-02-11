@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<ui:composition template="/tmpl.xhtml">
+
+<ui:define name="titulo">Inicio de Sesión - Registro</ui:define>
+
+	<ui:define name="contenido">
+
+<h:form>
+	<h:panelGrid columns="3">
+	
+		<h:outputLabel value="Usuario" />
+		<h:inputText value="#{controladorVista.email}" id="txtnom" />
+		<h:message for="txtnom"/>
+		
+		<h:outputLabel value="Clave" />
+		<h:inputSecret value="#{controladorVista.contrasenia}"  type="password" id="txtcla" />
+		<h:message for="txtcla"/>
+		
+		
+		
+		<h:commandButton action="#{controladorVista.loginU()}" value="Iniciar Sesion" />
+	<h:commandButton action="#{usuarioBean.regresarPM()}" value="No tienes cuenta?... Registrate aqui" />
+		
+	
+	</h:panelGrid>
+
+	<h:messages globalOnly="true" />
+</h:form>
+</ui:define>
+</ui:composition>
+</html>

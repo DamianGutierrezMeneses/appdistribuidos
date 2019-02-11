@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+      
+      <h:head>
+	<f:metadata>
+		<f:viewParam id="id" name="id" value="#{grabadorBean.id}" />
+		<f:viewAction action="#{grabadorBean.loadData()}" />
+	</f:metadata>
+</h:head> 
+
+<ui:composition template="/tmpl.xhtml">
+
+	<ui:define name="titulo">Crear Grabadores</ui:define>
+
+	<ui:define name="contenido">
+
+<h:form>
+	<h:panelGrid columns="3">
+		
+		<h:outputLabel value="Serial" />
+		<h:inputText value="#{grabadorBean.serial}" id="txtserial" />
+		<h:message for="txtserial"/>
+		
+		<h:outputLabel value="Nombre" />
+		<h:inputText value="#{grabadorBean.nomGra}" id="txtnombre" />
+		<h:message for="txtnombre"/>
+		
+		<h:outputLabel value="Selecciona usuario"/> 
+			<h:selectOneMenu  id="usuario" value="#{grabadorBean.cedulaUsu}">
+				<f:selectItems id="comb" value="#{usuarioBean.usuarios}" var="usu" itemLabel="#{usu.nombres}" itemValue="#{usu.cedula}" />
+			</h:selectOneMenu>
+		<br/>
+
+		<h:inputHidden value="#{grabadorBean.editarp}" />
+		<h:commandButton action="#{grabadorBean.registro()}" value="Guardar Grabador" />
+		<h:commandButton action="#{grabadorBean.regresarMp()}" value="Regresar Menu Principal" />
+					<br />
+	</h:panelGrid>
+	
+	
+	<h:dataTable var="_camara" value="#{grabadorBean.g.listarCamara}"
+			styleClass="simpletablestyle">
+			<h:column>
+				<f:facet name="header">Ingresa el Nombre de al menos una Cámara</f:facet>
+							<br />
+				<h:inputText value="#{_camara.nombre}" />
+			</h:column>
+			
+			<f:facet name="footer">
+				<h:commandButton action="#{grabadorBean.addCamara()}"
+					value="Agregar Camara">
+					<f:ajax render="@form" execute="@form" />
+				</h:commandButton>
+			</f:facet>
+	</h:dataTable>
+	
+	
+	<h:messages globalOnly="true" />
+</h:form>
+		
+
+	</ui:define>
+</ui:composition>
+</html>

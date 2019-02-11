@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<ui:composition template="/tmpl.xhtml">
+
+	<ui:define name="titulo">Menu Logs</ui:define>
+
+	<ui:define name="contenido">
+
+		<h:form>
+
+<h:dataTable var="_Log" value="#{logBean.listaLogs}"
+
+            styleClass="simpletablestyle">
+            <h:column>
+                <f:facet name="header">Codigo</f:facet>
+                #{_Log.codigoLog}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Accion</f:facet>
+                #{_Log.accion}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Fecha</f:facet>
+                #{_Log.fechaLog}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Usuario</f:facet>
+                #{_Log.usuario}
+            </h:column>
+
+
+            <f:facet name="footer">
+            
+            <h:commandButton action="#{logBean.regresar()}" value="Regresar" />
+
+            </f:facet>
+        </h:dataTable>
+
+</h:form>
+		
+
+	</ui:define>
+</ui:composition>
+</html>

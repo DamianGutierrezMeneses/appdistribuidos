@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="/tmpl.xhtml">
+
+	<ui:define name="titulo">Crear Rostros</ui:define>
+
+	<ui:define name="contenido">
+
+
+	<f:metadata>
+        <f:viewParam id="cedula" name="cedula" value="#{controladorVista.cedula}"/>
+        <f:viewAction action="#{controladorVista.loadDataUsuario()}" />
+ 	</f:metadata>
+ 	
+		<h:form>
+	<h:panelGrid columns="3">
+		
+		<h:outputLabel value="Ruta de la imagen" />
+		<h:inputText value="#{rostroBean.ruta}" id="txtnombre" />
+		<h:message for="txtnombre"/>
+		
+		
+		<h:outputLabel value="Selecciona usuario"/> 
+			<h:selectOneMenu  id="usuario" value="#{rostroBean.cedulaUsu}">
+				<f:selectItems id="comb" value="#{usuarioBean.usuarios}" var="usu" itemLabel="#{usu.nombres}" itemValue="#{usu.cedula}" />
+			</h:selectOneMenu>
+		<br/>
+		
+
+		<h:inputHidden value="#{rostroBean.editarp}" />
+		<h:commandButton action="#{rostroBean.registro()}" value="Guardar Rostro" />
+		<h:commandButton action="menu-principal" value="Regresar Menu Principal" />
+	
+	</h:panelGrid>
+	<h:messages globalOnly="false" />
+</h:form>
+
+	</ui:define>
+</ui:composition>
+</html>
